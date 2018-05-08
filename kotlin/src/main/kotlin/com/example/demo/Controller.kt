@@ -1,5 +1,6 @@
 package com.example.demo
 
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -8,7 +9,12 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
 class Controller {
 
-    @GetMapping("/greeting")
-    fun findAll() = arrayListOf("aaa", "aaaaaa", "uuuuu")
+    @Autowired
+    lateinit var demo: DemoJWT;
+
+    @GetMapping("/start")
+    fun start() {
+        demo.run()
+    }
 
 }
